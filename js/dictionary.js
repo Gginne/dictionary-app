@@ -1,8 +1,6 @@
-require("dotenv").config()
-
 class Definition{
     constructor(){
-        this.merriamKey = process.env.MERRIAM_KEY
+        this.merriamKey = "4ff5c852-7b71-4675-b9cf-bd1efbaf2af8"
     }
 
     async requestMerriam(word){
@@ -25,5 +23,6 @@ class Definition{
        
     }
 }
+
 
 //Test:
