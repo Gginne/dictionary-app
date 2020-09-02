@@ -1,9 +1,7 @@
 class Definition{
     constructor(){
         
-        this.merriamKey = '4ff5c852-7b71-4675-b9cf-bd1efbaf2af8'
-        this.oxfordID = '079757f375b618a23b9fcf002448bfbc'
-        this.oxfordID = 'cbeeeb41'
+        this.merriamKey = process.env.MERRIAM_KEY
     }
 
     async requestMerriam(word){
