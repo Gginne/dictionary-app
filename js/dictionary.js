@@ -1,3 +1,5 @@
+require("dotenv").config()
+
 class Definition{
     constructor(){
         this.merriamKey = process.env.MERRIAM_KEY
