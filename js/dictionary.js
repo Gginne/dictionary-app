@@ -10,13 +10,17 @@ class Definition{
         const data = await res.json()
 
         let defs = []
-        data.forEach((def) => {
-            const {fl, shortdef} = def
-            const defObj = {fl, def: shortdef}
-            if(!(defObj in defs)){
-                defs.push(defObj)
-            }    
-        })
+        try{
+            data.forEach((def) => {
+                const {fl, shortdef} = def
+                const defObj = {fl, def: shortdef}
+                if(!(defObj in defs)){
+                    defs.push(defObj)
+                }    
+            })
+        } catch(err){
+            console.log(err)
+        }
         return defs
     }
 
@@ -27,7 +31,20 @@ class Definition{
            headers
        })
        const data = await res.json()
-       return data
+       let defs = []
+       try{
+            const fl = data.results[0].lexicalEntries[0].lexicalCategory.id
+            const {lexicalEntries} = data.results[0]
+            lexicalEntries.forEach(({entries, lexicalCategory}) => {
+                const fl = lexicalCategory.id
+                const defObjs = entries[0].senses.map(({definitions}) => ({fl, def: definitions[0]}))
+                defs = [...defObjs, ...defs]
+            })
+        } catch(err){
+            console.log(err)
+        }
+       
+       return defs
     }
 }
 
