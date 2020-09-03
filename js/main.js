@@ -7,13 +7,11 @@ let ui = new UI()
 const wordInput = document.querySelector("#dict_input")
 
 //Event Listeners
-wordInput.addEventListener('input', e => {
+wordInput.addEventListener('input', async e => {
     let word = wordInput.value
-    def.requestMerriam(word).then(data => {
-        ui.renderCard(data, word)
-        
-        console.log(data)
-    
-    })  
+    const merriam = await def.requestMerriam(word)
+    ui.renderCard(merriam, word)
+    const oxford = await def.requestOxford(word)
+    console.log(oxford)
     
 })
