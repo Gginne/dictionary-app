@@ -34,8 +34,7 @@ class Definition{
        let defs = []
        try{
             const fl = data.results[0].lexicalEntries[0].lexicalCategory.id
-            const {lexicalEntries} = data.results[0]
-            lexicalEntries.forEach(({entries, lexicalCategory}) => {
+            data.results[0].lexicalEntries.forEach(({entries, lexicalCategory}) => {
                 const fl = lexicalCategory.id
                 const defObjs = entries[0].senses.map(({definitions}) => ({fl, def: definitions[0]}))
                 defs = [...defObjs, ...defs]
