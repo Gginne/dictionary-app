@@ -25,7 +25,7 @@ class UI{
         }
         
         return ` 
-        <div class="col s12 m12 l12">
+        <div class="col s12 m6 l6">
           <div class="card">
           <div class="card-content"> 
           <div class="card-title">
