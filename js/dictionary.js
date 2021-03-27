@@ -8,7 +8,7 @@ class Definition{
     async requestMerriam(word){
         const res = await fetch(`https://dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${this.merriamKey}`)
         const data = await res.json()
-
+        console.log(data)
         let defs = []
         try{
             data.forEach((def) => {
@@ -25,12 +25,16 @@ class Definition{
     }
 
     async requestOxford(word){
-       const headers = new Headers({"app_id": this.oxfordID, "app_key": this.oxfordKey})
+       const headers = new Headers({
+           "app_id": this.oxfordID, 
+           "app_key": this.oxfordKey,
+        })
        const proxy = "https://cors-anywhere.herokuapp.com"
        const res = await fetch(`${proxy}/https://od-api.oxforddictionaries.com/api/v2/entries/en-us/${word}`, {
-           headers
+            headers
        })
        const data = await res.json()
+       console.log(data)
        let defs = []
        try{
             const fl = data.results[0].lexicalEntries[0].lexicalCategory.id

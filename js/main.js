@@ -17,8 +17,7 @@ wordInput.addEventListener('keyup', async e => {
     } else if(e.keyCode === 13){
         const merriamData = await def.requestMerriam(word)
         const oxfordData = await def.requestOxford(word)
-        container.innerHTML = ui.renderCard("merriam", merriamData, word) +
-                              ui.renderCard("oxford", oxfordData, word)  
+        container.innerHTML = ui.renderCard("merriam", merriamData, word) + ui.renderCard("oxford", oxfordData, word)  
     }
 
     
